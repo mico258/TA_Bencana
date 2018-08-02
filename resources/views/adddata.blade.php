@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>WebGIS Bencana</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -84,8 +84,20 @@
                         <input type="radio" name="tipe_bencana" value="gunungberapi"> Gunung Api<br>
                         <br>
 
+                        <label for="tahun_bencana"> Tahun :</label>
+                        <input type="text" name="tahun_bencana" class="form-control">
+                        <br>
+
+                        <label for="bulan_bencana"> Bulan :</label>
+                        <input type="text" name="bulan_bencana" class="form-control">
+                        <br>
+
+                        <label for="hari_bencana"> Hari :</label>
+                        <input type="text" name="hari_bencana" class="form-control">
+                        <br>
+
                         <label for="lintang_bencana"> Waktu :</label>
-                        <input type="datetime-local" name="waktu_bencana" class="form-control">
+                        <input type="text" name="waktu_bencana" class="form-control">
                         <br>
 
                         <label for="lintang_bencana"> Posisi Lintang :</label>

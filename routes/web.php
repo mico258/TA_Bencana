@@ -20,3 +20,9 @@ Route::get('/add_data', function () {
 });
 
 Route::post('/add_data_to_db', 'BencanaController@store');
+
+Route::get('/view_data', 'BencanaController@index');
+
+Route::get('/view_map', function () {
+    return view('map');
+});

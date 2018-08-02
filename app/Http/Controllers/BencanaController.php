@@ -13,6 +13,9 @@ class BencanaController extends Controller
 
         $file = new Bencana;
             $file->tipe_bencana = $request->input('tipe_bencana');
+            $file->tahun =  $request->input('tahun_bencana');
+            $file->bulan =  $request->input('bulan_bencana');
+            $file->hari =  $request->input('hari_bencana');
             $file->waktu =  $request->input('waktu_bencana');
             $file->bujur =  $request->input('bujur_bencana');
             $file->lintang =  $request->input('lintang_bencana');
@@ -28,6 +31,11 @@ class BencanaController extends Controller
             $file->total_kerugian =  $request->input('total_kerugian_bencana');
        $file->save();
       return view('adddata');
+    }
+
+    public function index(){
+      $data['bencana'] = Bencana::get();
+      return view('viewdata', $data);
     }
 
 
