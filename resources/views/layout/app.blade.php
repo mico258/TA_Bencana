@@ -16,10 +16,56 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/icomoon/styles.css')}}">
-    <style type="text/css">
-        body {
-            background: url("{{asset('img/brand/gmbrbacgrounwebsite.jpg')}}");
-            background-attachment: fixed;
+    <style>
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .full-height {
+            height: 100vh;
+        }
+
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 84px;
+        }
+
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .m-b-md {
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -27,7 +73,7 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
             <div class="container">
-                <div class="navbar-header" style="height: 70px;">
+                <div class="navbar-header" style="height: 80px;">
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
@@ -38,8 +84,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
-                        <img src="{{asset('img/brand/logoku.jpg')}}" style="height: 40px; width: auto;">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{asset('icon/itb_logo.png')}}" style="height: 60px; width: auto;">
                     </a>
                 </div>
 
@@ -48,34 +94,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                            <li><a href="/welcome">Home</a><li>
+                            <li><a href="/" >Home</a><li>
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li><a href="/home">Dashboard</a></li>
-                            <li><a href="/message-box">Message-Box</a></li>
-                            <li><a href="/store">My Store</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            <li><a href="/view_data">View Data</a></li>
 
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="/profile">My Profile</a>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
                         @endguest
                     </ul>
                 </div>
