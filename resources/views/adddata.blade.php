@@ -70,7 +70,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-info">
-                <div class="panel-heading">Add Data Bencana</div>
+                <div class="panel-heading">Add Data Bencana <a href="/admin/logout" style="margin-left: 70%"><button type="button" class="btn btn-danger" >Logout</button></a></div>
 
 
 

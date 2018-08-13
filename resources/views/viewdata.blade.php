@@ -1,19 +1,24 @@
 @extends('layout.app')
 
     @section('content')
-    <div class="container">
+    <div class="container" style="background-color :#e0eaf9	; width : 100%">
     <div class="row">
         <div class="col-xs-6 col-md-12 ">
-            <div class="panel panel-info">
+            <div class="panel panel-info" >
 
 
 
 
-                <div class="panel-body">
+                <div class="panel-body"  style="background-color :#e0eaf9	;">
+
+                  <select id="myInput" onchange="myFunction()" class="btn btn-secondary" style="background-color: #008CBA;color: white; margin: 10px">
+                      <option value="Tanah Longsor">Tanah Longsor</option>
+                      <option value="Gunung Api">Gunung Berapi</option>
+                    </select>
 
 
-                  <table  id="table-example" class="table table-striped table-bordered dt-responsive nowrap table-condensed">
-                          <thead id="thead">
+                  <table  id="myTable" class="table table-striped table-bordered dt-responsive nowrap table-condensed" >
+                          <thead id="dd">
 
                           <tr>
                           <th rowspan="2" valign="middle">No</th>
@@ -61,7 +66,7 @@
                             <td>{{$b->kerugian_infrastruktur}} </td>
                             <td>{{$b->kerugian_ekonomi}} </td>
                             <td>{{$b->kerugian_pemukiman}} </td>
-                            <td>{{$b->total_kerugian}} </td>
+                            <td> @convert($b->total_kerugian) </td>
                             </tr>
                             @endforeach
 
@@ -83,3 +88,26 @@
     </div>
 </div>
 @endsection
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

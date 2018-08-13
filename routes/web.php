@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BencanaController@welcome');
 
 Route::get('/add_data', function () {
     return view('adddata');
@@ -26,3 +24,11 @@ Route::get('/view_data', 'BencanaController@index');
 Route::get('/view_map', function () {
     return view('map');
 });
+
+Route::get('/admin', function () {
+    return view('admin.auth.login');
+});
+
+Route::post('/admin/signIn', 'Auth\LoginController@signin');
+
+Route::get('/admin/logout', 'Auth\LoginController@logout');

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+000000@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -221,6 +221,7 @@ optgroup {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+
 }
 
 td,
@@ -1545,7 +1546,7 @@ h6 .small,
 .h6 .small {
   font-weight: normal;
   line-height: 1;
-  color: #777777;
+  color: #000000;
 }
 
 h1,
@@ -1690,7 +1691,7 @@ mark,
 }
 
 .text-muted {
-  color: #777777;
+  color: #000000;
 }
 
 .text-primary {
@@ -1870,7 +1871,7 @@ dd {
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #777777;
+  border-bottom: 1px dotted #000000;
 }
 
 .initialism {
@@ -1896,7 +1897,7 @@ blockquote .small {
   display: block;
   font-size: 80%;
   line-height: 1.6;
-  color: #777777;
+  color: #000000;
 }
 
 blockquote footer:before,
@@ -3009,7 +3010,7 @@ table {
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #777777;
+  color: #000000;
   text-align: left;
 }
 
@@ -3067,7 +3068,7 @@ th {
 }
 
 .table-bordered {
-  border: 1px solid #ddd;
+  border: 3px solid #20c3ff;
 }
 
 .table-bordered > thead > tr > th,
@@ -3076,12 +3077,12 @@ th {
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > th,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #ddd;
+  border: 3px solid #20c3ff;
 }
 
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
-  border-bottom-width: 2px;
+  border-bottom-width: 3px;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
@@ -3351,7 +3352,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.6;
-  color: #555555;
+  color: #000000;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccd0d2;
@@ -4445,7 +4446,7 @@ fieldset[disabled] .btn-link {
 .btn-link[disabled]:focus,
 fieldset[disabled] .btn-link:hover,
 fieldset[disabled] .btn-link:focus {
-  color: #777777;
+  color: #000000;
   text-decoration: none;
 }
 
@@ -4610,7 +4611,7 @@ tbody.collapse.in {
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
-  color: #777777;
+  color: #000000;
 }
 
 .dropdown-menu > .disabled > a:hover,
@@ -4645,7 +4646,7 @@ tbody.collapse.in {
   padding: 3px 20px;
   font-size: 12px;
   line-height: 1.6;
-  color: #777777;
+  color: #000000;
   white-space: nowrap;
 }
 
@@ -5092,12 +5093,12 @@ tbody.collapse.in {
 }
 
 .nav > li.disabled > a {
-  color: #777777;
+  color: #000000;
 }
 
 .nav > li.disabled > a:hover,
 .nav > li.disabled > a:focus {
-  color: #777777;
+  color: #000000;
   text-decoration: none;
   background-color: transparent;
   cursor: not-allowed;
@@ -5950,7 +5951,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 
 .breadcrumb > .active {
-  color: #777777;
+  color: #000000;
 }
 
 .pagination {
@@ -6019,7 +6020,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .disabled > a,
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
-  color: #777777;
+  color: #000000;
   background-color: #fff;
   border-color: #ddd;
   cursor: not-allowed;
@@ -6113,7 +6114,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-  color: #777777;
+  color: #000000;
   background-color: #fff;
   cursor: not-allowed;
 }
@@ -6148,7 +6149,7 @@ a.label:focus {
 }
 
 .label-default {
-  background-color: #777777;
+  background-color: #000000;
 }
 
 .label-default[href]:hover,
@@ -6212,7 +6213,7 @@ a.label:focus {
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #777777;
+  background-color: #000000;
   border-radius: 10px;
 }
 
@@ -6638,7 +6639,7 @@ button.list-group-item {
 .list-group-item.disabled:hover,
 .list-group-item.disabled:focus {
   background-color: #eeeeee;
-  color: #777777;
+  color: #000000;
   cursor: not-allowed;
 }
 
@@ -6651,7 +6652,7 @@ button.list-group-item {
 .list-group-item.disabled .list-group-item-text,
 .list-group-item.disabled:hover .list-group-item-text,
 .list-group-item.disabled:focus .list-group-item-text {
-  color: #777777;
+  color: #000000;
 }
 
 .list-group-item.active,
@@ -6867,7 +6868,7 @@ button.list-group-item-danger.active:focus {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 16px;
-  color: inherit;
+  color: #000000;
 }
 
 .panel-title > a,
@@ -6875,7 +6876,7 @@ button.list-group-item-danger.active:focus {
 .panel-title > .small,
 .panel-title > small > a,
 .panel-title > .small > a {
-  color: inherit;
+  color: #000000;
 }
 
 .panel-footer {

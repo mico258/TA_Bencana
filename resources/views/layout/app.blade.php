@@ -71,7 +71,7 @@
 </head>
 <body style="padding-top: 90px;">
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
+        <nav class="navbar navbar-light navbar-static-top navbar-fixed-top" style="background-color: #e3f2fd; ">
             <div class="container">
                 <div class="navbar-header" style="height: 80px;">
 

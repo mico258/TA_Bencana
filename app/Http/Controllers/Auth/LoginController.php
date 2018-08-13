@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\admin;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Validator;
+use Illuminate\Support\Facades\Input;
 
 class LoginController extends Controller
 {
@@ -18,22 +21,35 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    private $rules = [
+  		"username" => "required",
+  		"password" => "required"
+  	];
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+      public function index() {
+      	return view('admin.auth.login');
+      }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
+      public function signin(Request $request) {
+      	$validation = Validator::make(Input::all(), $this->rules);
+
+      	if ($validation->fails()) {
+      		return view('admin.auth.login')->withErrors($validation);
+      	} else {
+
+              if ($request->input("username") != 'admin' && $request->input("password") != '123') {
+                  $data['failLogin'] = "Invalid credentials. Please Try Again!";
+                  return view('admin.auth.login', $data);
+              } else {
+                  session(['idAdminAktif' => 1]);
+                  return redirect('/add_data');
+              }
+      	}
+      }
+
+      public function logout() {
+          session()->forget('idAdminAktif');
+
+          return redirect('/admin');
+      }
 }

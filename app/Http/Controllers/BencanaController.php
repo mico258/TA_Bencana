@@ -38,5 +38,36 @@ class BencanaController extends Controller
       return view('viewdata', $data);
     }
 
+    public function welcome(){
+      $data['bencana'] = Bencana::where('tipe_bencana', '=', 'Gunung Api')->get();
+
+      $data['bencana_longsor'] = Bencana::where('tipe_bencana', '=', 'Tanah Longsor')->get();
+
+      $result[] = ['Tahun','Kerugian (Rp)'];
+        foreach ($data['bencana'] as $key => $value) {
+            $result[++$key] = [$value->tahun, (int)$value->total_kerugian];
+        }
+
+
+        $result_gunung_api_korbanjiwa[] = ['Tahun','Korban Jiwa'];
+          foreach ($data['bencana'] as $key => $value) {
+              $result_gunung_api_korbanjiwa[++$key] = [$value->tahun, (int)$value->korban];
+          }
+
+          $result_longsor_kerugian[] = ['Tahun','Kerugian (Rp)'];
+            foreach ($data['bencana_longsor'] as $key => $value) {
+                $result_longsor_kerugian[++$key] = [$value->tahun, (int)$value->total_kerugian];
+            }
+
+
+            $result_tanah_longsor_korbanjiwa[] = ['Tahun','Korban Jiwa'];
+              foreach ($data['bencana_longsor'] as $key => $value) {
+                  $result_tanah_longsor_korbanjiwa[++$key] = [$value->tahun, (int)$value->korban];
+              }
+
+      return view('welcome')->with('bencana',json_encode($result))->
+      with('korban_berapi',json_encode($result_gunung_api_korbanjiwa)) ->with('bencana_longsor',json_encode($result_longsor_kerugian))->with('korban_longsor',json_encode($result_tanah_longsor_korbanjiwa  ));;
+    }
+
 
 }
