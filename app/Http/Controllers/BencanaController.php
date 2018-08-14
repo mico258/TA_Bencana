@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\bencana;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,13 +39,14 @@ class BencanaController extends Controller
     }
 
     public function welcome(){
-      $data['bencana'] = Bencana::where('tipe_bencana', '=', 'Gunung Api')->get();
+      $data['bencana'] = Bencana::select(DB::raw('count(tipe_bencana) as total'), 'tahun')->where('tipe_bencana', '=', 'Gunung Api')->GroupBy('tahun')->get();
 
-      $data['bencana_longsor'] = Bencana::where('tipe_bencana', '=', 'Tanah Longsor')->get();
+      $data['bencana_longsor'] = Bencana::select(DB::raw('count(tipe_bencana) as total'), 'tahun')->where('tipe_bencana', '=', 'Tanah Longsor')->GroupBy('tahun')->get();
 
-      $result[] = ['Tahun','Kerugian (Rp)'];
+      $result[] = ['Tahun', 'Gunung Api'];
         foreach ($data['bencana'] as $key => $value) {
-            $result[++$key] = [$value->tahun, (int)$value->total_kerugian];
+
+            $result[++$key] = [$value->tahun,(int)$value->total];
         }
 
 
@@ -54,9 +55,9 @@ class BencanaController extends Controller
               $result_gunung_api_korbanjiwa[++$key] = [$value->tahun, (int)$value->korban];
           }
 
-          $result_longsor_kerugian[] = ['Tahun','Kerugian (Rp)'];
+          $result_longsor_kerugian[] = ['Tahun','Tanah Longsor'];
             foreach ($data['bencana_longsor'] as $key => $value) {
-                $result_longsor_kerugian[++$key] = [$value->tahun, (int)$value->total_kerugian];
+                $result_longsor_kerugian[++$key] = [$value->tahun, (int)$value->total];
             }
 
 
