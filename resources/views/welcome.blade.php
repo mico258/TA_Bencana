@@ -33,8 +33,13 @@
 
 
         </div>
+        <div class="content"   id="gunung_api" style="width: 50%; height: 500px ;float:left;"></div>
+        <div class="content"   id="tanah_longsor" style="width: 50%; height: 500px ;float:right;"></div> <br>
         <div class="content"   id="linechart" style="width: 50%; height: 500px ;float:left;"></div>
         <div class="content"   id="kerugian_longsor" style="width: 50%; height: 500px ;float:right;"></div>
+        <div class="content"   id="korban_bencana_gunungapi" style=" width: 50%; height: 500px ; float:left;"></div>
+
+        <div class="content"   id="korban_tanah_longsor" style=" width: 50%; height: 500px ; float:right;"></div>
 
 
 
@@ -45,18 +50,22 @@
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
+            var bencana1 = <?php echo $bencana1; ?>;
             var bencana = <?php echo $bencana; ?>;
-            console.log(bencana);
+            console.log(bencana1);
             var korban_berapi = <?php echo $korban_berapi; ?>;
+            var bencana_longsor1 = <?php echo $bencana_longsor1; ?>;
             var bencana_longsor = <?php echo $bencana_longsor; ?>;
             var korban_longsor = <?php echo $korban_longsor; ?>;
             google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart1);
+            google.charts.setOnLoadCallback(drawChart2);
             google.charts.setOnLoadCallback(drawChart_kerugian_berapi);
             google.charts.setOnLoadCallback(drawChart_korban_berapi);
             google.charts.setOnLoadCallback(drawChart_kerugian_longsor);
             google.charts.setOnLoadCallback(drawChart_korban_longsor);
-            function drawChart_kerugian_berapi() {
-              var data = google.visualization.arrayToDataTable(bencana);
+            function drawChart1() {
+              var data = google.visualization.arrayToDataTable(bencana1);
       //         var data = google.visualization.arrayToDataTable([
       //    ['Tahun', 'Jenis Bencana', 'Kerugian'],
       //    ['2004',  165,      938],
@@ -73,29 +82,78 @@
                   title: 'Tren Bencana Gunung Berapi',
                   isStacked: true,
                   bars : 'horizontal',
-                  colors: ['brown', 'green'],
+                  colors: ['black'],
 
 
               };
-              var chart = new google.visualization.ComboChart(document.getElementById('linechart'));
+              var chart = new google.visualization.ComboChart(document.getElementById('gunung_api'));
               chart.draw(data, options);
             }
 
-            function drawChart_korban_berapi() {
-              var data = google.visualization.arrayToDataTable(bencana_longsor);
+            function drawChart2() {
+              var data = google.visualization.arrayToDataTable(bencana_longsor1);
               var options = {
 
 
                   backgroundColor: '#e0eaf9',
                   seriesType: 'bars',
-                  title: 'Tren Bencana Gunung Berapi',
+                  title: 'Tren Bencana Tanah Longsor',
                   isStacked: true,
                   bars : 'horizontal',
                   colors: ['green'],
 
 
               };
-              var chart = new google.visualization.ComboChart(document.getElementById('kerugian_longsor'));
+              var chart = new google.visualization.ComboChart(document.getElementById('tanah_longsor'));
+              chart.draw(data, options);
+            }
+
+            function drawChart_kerugian_berapi() {
+              var data = google.visualization.arrayToDataTable(bencana);
+              var options = {
+                backgroundColor: '#e0eaf9',
+                title: 'Kurva Kerugian Bencana Gunung Berapi',
+                curveType: 'function',
+                colors: ['blue'],
+                legend: { position: 'bottom' }
+              };
+              var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+              chart.draw(data, options);
+            }
+            function drawChart_korban_berapi() {
+              var data = google.visualization.arrayToDataTable(korban_berapi);
+              var options = {
+                backgroundColor: '#e0eaf9',
+                title: 'Kurva Korban Bencana Gunung Berapi',
+                colors: ['red'],
+                curveType: 'function',
+                legend: { position: 'bottom' }
+              };
+              var chart = new google.visualization.LineChart(document.getElementById('korban_bencana_gunungapi'));
+              chart.draw(data, options);
+            }
+            function drawChart_kerugian_longsor() {
+              var data = google.visualization.arrayToDataTable(bencana_longsor);
+              var options = {
+                backgroundColor: '#e0eaf9',
+                title: 'Kurva Kerugian Bencana Tanah Longsor',
+                curveType: 'function',
+                colors: ['green'],
+                legend: { position: 'bottom' }
+              };
+              var chart = new google.visualization.LineChart(document.getElementById('kerugian_longsor'));
+              chart.draw(data, options);
+            }
+            function drawChart_korban_longsor() {
+              var data = google.visualization.arrayToDataTable(korban_longsor);
+              var options = {
+                backgroundColor: '#e0eaf9',
+                title: 'Kurva Korban BencanaTanah Longsor',
+                colors: ['yellow'],
+                curveType: 'function',
+                legend: { position: 'bottom' }
+              };
+              var chart = new google.visualization.LineChart(document.getElementById('korban_tanah_longsor'));
               chart.draw(data, options);
             }
 

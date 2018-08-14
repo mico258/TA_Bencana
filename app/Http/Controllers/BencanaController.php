@@ -39,35 +39,47 @@ class BencanaController extends Controller
     }
 
     public function welcome(){
-      $data['bencana'] = Bencana::select(DB::raw('count(tipe_bencana) as total'), 'tahun')->where('tipe_bencana', '=', 'Gunung Api')->GroupBy('tahun')->get();
 
-      $data['bencana_longsor'] = Bencana::select(DB::raw('count(tipe_bencana) as total'), 'tahun')->where('tipe_bencana', '=', 'Tanah Longsor')->GroupBy('tahun')->get();
+      $data['bencana'] = Bencana::where('tipe_bencana', '=', 'Gunung Api')->get();
+      $data['bencana_longsor'] = Bencana::where('tipe_bencana', '=', 'Tanah Longsor')->get();
 
-      $result[] = ['Tahun', 'Gunung Api'];
-        foreach ($data['bencana'] as $key => $value) {
 
-            $result[++$key] = [$value->tahun,(int)$value->total];
+      $data['bencana1'] = Bencana::select(DB::raw('count(tipe_bencana) as total'), 'tahun')->where('tipe_bencana', '=', 'Gunung Api')->GroupBy('tahun')->get();
+
+      $data['bencana_longsor1'] = Bencana::select(DB::raw('count(tipe_bencana) as total'), 'tahun')->where('tipe_bencana', '=', 'Tanah Longsor')->GroupBy('tahun')->get();
+
+      $result1[] = ['Tahun', 'Gunung Api'];
+        foreach ($data['bencana1'] as $key => $value) {
+
+            $result1[++$key] = [$value->tahun,(int)$value->total];
         }
-
+        $result[] = ['Tahun','Kerugian (Rp)'];
+        foreach ($data['bencana'] as $key => $value) {
+            $result[++$key] = [$value->tahun, (int)$value->total_kerugian];
+        }
 
         $result_gunung_api_korbanjiwa[] = ['Tahun','Korban Jiwa'];
           foreach ($data['bencana'] as $key => $value) {
               $result_gunung_api_korbanjiwa[++$key] = [$value->tahun, (int)$value->korban];
           }
 
-          $result_longsor_kerugian[] = ['Tahun','Tanah Longsor'];
-            foreach ($data['bencana_longsor'] as $key => $value) {
-                $result_longsor_kerugian[++$key] = [$value->tahun, (int)$value->total];
+          $result_longsor1[] = ['Tahun','Tanah Longsor'];
+            foreach ($data['bencana_longsor1'] as $key => $value) {
+                $result_longsor1[++$key] = [$value->tahun, (int)$value->total];
             }
 
+            $result_longsor_kerugian[] = ['Tahun','Kerugian (Rp)'];
+                        foreach ($data['bencana_longsor'] as $key => $value) {
+                            $result_longsor_kerugian[++$key] = [$value->tahun, (int)$value->total_kerugian];
+                        }
 
             $result_tanah_longsor_korbanjiwa[] = ['Tahun','Korban Jiwa'];
               foreach ($data['bencana_longsor'] as $key => $value) {
                   $result_tanah_longsor_korbanjiwa[++$key] = [$value->tahun, (int)$value->korban];
               }
 
-      return view('welcome')->with('bencana',json_encode($result))->
-      with('korban_berapi',json_encode($result_gunung_api_korbanjiwa)) ->with('bencana_longsor',json_encode($result_longsor_kerugian))->with('korban_longsor',json_encode($result_tanah_longsor_korbanjiwa  ));;
+      return view('welcome')->with('bencana',json_encode($result))->with('bencana_longsor',json_encode($result_longsor_kerugian))->with('bencana1',json_encode($result1))->
+      with('korban_berapi',json_encode($result_gunung_api_korbanjiwa)) ->with('bencana_longsor1',json_encode($result_longsor1))->with('korban_longsor',json_encode($result_tanah_longsor_korbanjiwa  ));;
     }
 
 
